@@ -24,13 +24,13 @@ public class Factory extends BaseEntity {
     private String factoryName;
 
     @Column(name = "country", nullable = false)
-    private TextType country;
+    private String country;
 
     @Column(name = "region", nullable = false)
-    private TextType region;
+    private String region;
 
     @Column(name = "city", nullable = false)
-    private TextType city;
+    private String city;
 
     @Column(name = "employees", nullable = false)
     private Integer employees;

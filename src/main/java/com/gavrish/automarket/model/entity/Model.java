@@ -36,7 +36,7 @@ public class Model extends BaseEntity {
 
     @Type(type = "pgsql_enum")
     @Enumerated(value = EnumType.STRING)
-    @Column(name = "color", nullable = false)
+    @Column(name = "color")
     private ColorEnum color;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -47,7 +47,7 @@ public class Model extends BaseEntity {
     @JoinColumn(name = "transmission_id")
     private Transmission transmission;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "model")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "model")      // ее тоже нужно сделать в SQL конфигурации?
     private List<Car> cars = new LinkedList<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "model")

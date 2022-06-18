@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 @Repository
 public interface EngineRepository extends JpaRepository<Engine, UUID> {
+
+    boolean existsByName(String name);
 }

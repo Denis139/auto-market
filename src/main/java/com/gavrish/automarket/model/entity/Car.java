@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.Accessors;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,7 +13,7 @@ import java.time.LocalDateTime;
 @Data
 @Accessors(chain = true)
 @NoArgsConstructor
-@ToString(callSuper = true, exclude = "model")
+@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "car")
 public class Car extends BaseEntity {

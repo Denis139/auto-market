@@ -23,6 +23,9 @@ import java.util.List;
 @Table(name = "transmission")
 public class Transmission extends BaseEntity {
 
+    @Column(name = "name", nullable = false)
+    private String name;
+
     @Type(type = "pgsql_enum")
     @Enumerated(value = EnumType.STRING)
     @Column(name = "transmission_type", nullable = false)

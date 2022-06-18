@@ -1,0 +1,33 @@
+package com.gavrish.automarket.model.dto.request;
+
+import com.gavrish.automarket.model.entity.ColorEnum;
+import com.gavrish.automarket.model.entity.DriveTrainEnum;
+import com.gavrish.automarket.model.entity.Engine;
+import com.gavrish.automarket.model.entity.Transmission;
+import lombok.Data;
+import lombok.experimental.Accessors;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.UUID;
+
+@Data
+@Accessors
+public class ModelAddRequest {
+
+    @NotBlank(message = "Field[name] must be present")
+    private String name;
+
+    @NotNull(message = "Field[driveTrain] must be present")
+    private DriveTrainEnum driveTrain;
+
+    @NotNull(message = "Field[fuelConsumption] must be present")
+    private Double fuelConsumption;
+
+    private ColorEnum color;
+
+    @NotNull(message = "Field[engine] must be present")
+    private UUID engineId;
+
+    @NotNull(message = "Field[transmission] must be present")
+    private UUID transmissionId;
+}
