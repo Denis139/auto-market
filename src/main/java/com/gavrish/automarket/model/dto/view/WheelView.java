@@ -2,11 +2,10 @@ package com.gavrish.automarket.model.dto.view;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-
 import java.util.UUID;
 
 @Data
-@Accessors
+@Accessors(chain = true)
 public class WheelView {
 
     private UUID id;

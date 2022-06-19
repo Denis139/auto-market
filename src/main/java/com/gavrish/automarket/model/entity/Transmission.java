@@ -8,7 +8,6 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
-
 import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;

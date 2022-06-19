@@ -3,6 +3,7 @@ package com.gavrish.automarket.service.domain;
 import com.gavrish.automarket.model.dto.request.FactoryAddRequest;
 import com.gavrish.automarket.model.dto.request.FactoryUpdateRequest;
 import com.gavrish.automarket.model.dto.view.FactoryView;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -14,7 +15,7 @@ public interface FactoryDomainService {
 
     List<FactoryView> getAll();
 
-    FactoryView update(FactoryUpdateRequest request);
+    FactoryView update(UUID id, FactoryUpdateRequest request);
 
-    void delete(UUID id);
+    Boolean delete(UUID id);
 }

@@ -30,7 +30,7 @@ public class Car extends BaseEntity {
     @Column(name = "price")
     private BigDecimal price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)         //  нужно ли добавлять в маппер?
     @JoinColumn(name = "model_id")
     private Model model;
 }

@@ -13,7 +13,7 @@ public class TransmissionAddRequest {
     private String name;
 
     @NotNull(message = "Field [transmissionTypeEnum] must be present")
-    private TransmissionTypeEnum transmissionTypeEnum;
+    private TransmissionTypeEnum transmissionType;
 
     @NotNull(message = "Field [numberGears] mustn't be null")
     private Integer numberGears;

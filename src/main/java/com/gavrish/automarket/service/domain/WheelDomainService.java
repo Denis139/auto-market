@@ -14,7 +14,7 @@ public interface WheelDomainService {
 
     List<WheelView> getAll();
 
-    WheelView update(WheelUpdateRequest request);
+    WheelView update(UUID id, WheelUpdateRequest request);
 
-    void delete(UUID id);
+    Boolean delete(UUID id);
 }

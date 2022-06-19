@@ -6,18 +6,18 @@ import org.hibernate.type.TextType;
 import java.util.UUID;
 
 @Data
-@Accessors
+@Accessors(chain = true)
 public class FactoryView {
 
     private UUID id;
 
     private String factoryName;
 
-    private TextType country;
+    private String country;
 
-    private TextType region;
+    private String region;
 
-    private TextType city;
+    private String city;
 
     private Integer employees;
 

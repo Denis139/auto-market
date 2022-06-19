@@ -54,17 +54,18 @@ public class EngineDomainServiceImpl implements EngineDomainService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public EngineView update(UUID id, EngineUpdateRequest request) {
-        var engine = findById(id);
 
+        var engine = findById(id);
         engine = engineMapper.merge(engine, request);
         engine = engineRepository.saveAndFlush(engine);
 
-        return engineMapper.from(engine);         //???????????
+        return engineMapper.from(engine);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Boolean delete(UUID id) {
+
         var engine = findById(id);
         engineRepository.delete(engine);
         engineRepository.flush();
