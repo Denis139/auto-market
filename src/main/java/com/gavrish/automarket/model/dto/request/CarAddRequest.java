@@ -3,6 +3,7 @@ package com.gavrish.automarket.model.dto.request;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -11,16 +12,16 @@ import java.util.UUID;
 @Accessors(chain = true)
 public class CarAddRequest{
 
-    @NotBlank(message = "Field [brand] must be present")    // поле брэнд обязательно
+    @NotBlank(message = "Field [brand] must be present")
     private String brand;
 
-    @NotBlank(message = "Field [yearOfIssue] mustn't be null")
+    @NotNull(message = "Field [yearOfIssue] must be present")
     private LocalDateTime yearOfIssue;
 
     private Long mileage;
 
     private BigDecimal price;
 
-    @NotBlank(message = "Field [modelId] must be present")
+    @NotNull(message = "Field [modelId] must be present")
     private UUID modelId;
 }

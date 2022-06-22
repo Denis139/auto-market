@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Data
-@Accessors
+@Accessors(chain = true)
 public class ModelAddRequest {
 
     @NotBlank(message = "Field[name] must be present")

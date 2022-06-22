@@ -6,8 +6,11 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
-@Accessors
+@Accessors(chain = true)
 public class WheelAddRequest {
+
+    @NotBlank(message = "Field [name] must be present")
+    private String name;
 
     private Double diameter;
 

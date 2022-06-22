@@ -14,7 +14,7 @@ public interface ModelDomainService {
 
     List<ModelView> getAll();
 
-    ModelView update (ModelUpdateRequest request);
+    ModelView update (UUID id, ModelUpdateRequest request);
 
-    void delete(UUID id);
+    Boolean delete(UUID id);
 }

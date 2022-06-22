@@ -10,6 +10,8 @@ public class WheelView {
 
     private UUID id;
 
+    private String name;
+
     private Double diameter;
 
     private Double width;

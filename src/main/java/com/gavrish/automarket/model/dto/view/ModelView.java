@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 import java.util.UUID;
 
 @Data
-@Accessors
+@Accessors(chain = true)
 public class ModelView {
 
     private UUID id;

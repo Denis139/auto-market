@@ -7,7 +7,8 @@ import java.util.Arrays;
 public enum TransmissionTypeEnum {
     AUTOMATIC("AUTOMATIC"),
     MECHANICAL("MECHANICAL"),
-    VARIATOR("VARIATOR");
+    ROBOT("ROBOT"),
+    CVT("CVT");
 
     private final String value;
 

@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
-@Accessors
+@Accessors(chain = true)
 public class FactoryAddRequest {
 
     @NotBlank(message = "Field [factoryName] must be present")

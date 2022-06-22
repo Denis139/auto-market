@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 @Accessors(chain = true)
 public class EngineAddRequest {
 
-    @NotNull(message = "Field [name] must be present")
+    @NotNull(message = "Field [name] must be present")     /////// должно быть нотБланк
     private String name;
 
     @NotNull(message = "Field [engineTypeEnum] must be present")

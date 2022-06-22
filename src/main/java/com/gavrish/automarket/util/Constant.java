@@ -40,6 +40,9 @@ public class Constant {
     public static final String DELETE_CAR = "/api/v1/car/delete/{id}";
 
 
-    public static final String ADD_MODEL = "/api/v1/models/add";
-    public static final String GET_MODEL = "/api/v1/models/get";
+    public static final String ADD_MODEL= "/api/v1/models/add";
+    public static final String GET_MODEL = "/api/v1/models/get/{id}";
+    public static final String GET_ALL_MODEL = "/api/v1/models/getAll";
+    public static final String UPDATE_MODEL = "/api/v1/models/update/{id}";
+    public static final String DELETE_MODEL = "/api/v1/models/delete/{id}";
 }

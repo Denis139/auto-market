@@ -45,7 +45,7 @@ public class Engine extends BaseEntity {
     @Column(name = "warranty")
     private String warranty;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "engine")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "engine")           // почему не многие ко многим?
     private List<Model> models = new LinkedList<>();
 }
 

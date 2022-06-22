@@ -8,9 +8,9 @@ CREATE TYPE color AS ENUM (
   'METALLIC WHITE', 'METALLIC BLACK', 'METALLIC GRAY', 'METALLIC BROWN', 'METALLIC RED', 'METALLIC BLUE',
     'METALLIC GREEN', 'METALLIC GOLD', 'METALLIC ORANGE', 'METALLIC YELLOW', 'METALLIC PURPLE');
 
-CREATE TYPE transmission_type AS ENUM ('AUTOMATIC', 'MECHANICAL', 'VARIATOR');
+CREATE TYPE transmission_type AS ENUM ('AUTOMATIC', 'MECHANICAL', 'ROBOT', 'CVT');
 
-CREATE TYPE engine_type AS ENUM ('GASOLINE', 'DIESEL', 'HYBRID');
+CREATE TYPE engine_type AS ENUM ('GASOLINE', 'DIESEL', 'HYBRID', 'ELECTRICAL');
 
 CREATE TABLE IF NOT EXISTS engine
 (
@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS wheel
     id           uuid      default uuid_generate_v4() not null
         constraint wheel_pkey
             primary key,
+    name         varchar                              not null,
     diameter     float,
     width        float                                not null,
     number_holes int                                  not null,

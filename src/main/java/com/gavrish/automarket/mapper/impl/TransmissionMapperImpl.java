@@ -13,6 +13,7 @@ public class TransmissionMapperImpl implements TransmissionMapper {
     @Override
     public Transmission from(TransmissionAddRequest source) {
         return new Transmission()
+                .setName(source.getName())
                 .setTransmissionType(source.getTransmissionType())
                 .setNumberGears(source.getNumberGears());
     }

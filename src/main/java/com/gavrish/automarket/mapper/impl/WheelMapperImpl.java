@@ -13,6 +13,7 @@ public class WheelMapperImpl implements WheelMapper {
     @Override
     public Wheel from(WheelAddRequest source) {
         return new Wheel()
+                .setName(source.getName())
                 .setDiameter(source.getDiameter())
                 .setWidth(source.getWidth())
                 .setNumberHoles(source.getNumberHoles())
@@ -23,6 +24,7 @@ public class WheelMapperImpl implements WheelMapper {
     @Override
     public WheelView from(Wheel source) {
         return new WheelView()
+                .setName(source.getName())
                 .setId(source.getId())
                 .setDiameter(source.getDiameter())
                 .setWidth(source.getWidth())

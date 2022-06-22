@@ -8,7 +8,8 @@ public enum EngineTypeEnum {
 
     GASOLINE("GASOLINE"),
     DIESEL("DIESEL"),
-    HYBRID("HYBRID");
+    HYBRID("HYBRID"),
+    ELECTRICAL("ELECTRICAL");
 
 
     private final String value;

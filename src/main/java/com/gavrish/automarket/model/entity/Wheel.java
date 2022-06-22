@@ -18,6 +18,9 @@ import java.util.List;
 @Table(name = "wheel")
 public class Wheel extends BaseEntity {
 
+    @Column(name = "name", nullable = false)
+    private String name;
+
     @Column(name = "diameter")
     private Double diameter;
 
