@@ -8,7 +8,6 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
-
 import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,8 +16,8 @@ import java.util.List;
 @Data
 @Accessors(chain = true)
 @NoArgsConstructor
-@ToString(callSuper = true, exclude = {"cars", "modelFactories", "modelWheels"})
-@EqualsAndHashCode(callSuper = true, exclude = {"cars", "modelFactories", "modelWheels"})
+@ToString(callSuper = true, exclude = {"cars", "modelFactories"})
+@EqualsAndHashCode(callSuper = true, exclude = {"cars", "modelFactories"})
 @TypeDef(name = "pgsql_enum", typeClass = PostgreSQLEnumType.class)
 @Table(name = "model")
 public class Model extends BaseEntity {
@@ -47,12 +46,14 @@ public class Model extends BaseEntity {
     @JoinColumn(name = "transmission_id")
     private Transmission transmission;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "model")      // ее тоже нужно сделать в SQL конфигурации?
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "wheel_id")                                    // ДОБАВИЛ
+    private Wheel wheel;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "model")
     private List<Car> cars = new LinkedList<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "model")
     private List<ModelFactory> modelFactories = new LinkedList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "model")
-    private List<ModelWheel> modelWheels = new LinkedList<>();
 }

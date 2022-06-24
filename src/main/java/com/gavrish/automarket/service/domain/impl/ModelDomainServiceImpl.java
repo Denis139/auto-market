@@ -1,14 +1,13 @@
 package com.gavrish.automarket.service.domain.impl;
 
+import com.gavrish.automarket.mapper.ModelFactoryMapper;
 import com.gavrish.automarket.mapper.ModelMapper;
 import com.gavrish.automarket.model.dto.request.ModelAddRequest;
 import com.gavrish.automarket.model.dto.request.ModelUpdateRequest;
 import com.gavrish.automarket.model.dto.view.ModelView;
 import com.gavrish.automarket.model.entity.Model;
-import com.gavrish.automarket.repository.EngineRepository;
-import com.gavrish.automarket.repository.ModelRepository;
-import com.gavrish.automarket.repository.ModelWheelRepository;
-import com.gavrish.automarket.repository.TransmissionRepository;
+import com.gavrish.automarket.model.entity.Wheel;
+import com.gavrish.automarket.repository.*;
 import com.gavrish.automarket.service.domain.ModelDomainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,18 +22,40 @@ import java.util.UUID;
 public class ModelDomainServiceImpl implements ModelDomainService {
 
     private final ModelMapper modelMapper;
+    private final ModelFactoryMapper modelFactoryMapper;
     private final ModelRepository modelRepository;
     private final EngineRepository engineRepository;
     private final TransmissionRepository transmissionRepository;
+    private final WheelRepository wheelRepository;
+    private final FactoryRepository factoryRepository;
+    private final ModelFactoryRepository modelFactoryRepository;
+
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UUID add(ModelAddRequest request) {
 
-        var engine = engineRepository.getById(request.getEngineId());
-        var transmission = transmissionRepository.getById(request.getTransmissionId());
-        var model = modelMapper.from(request, engine, transmission);
-        model = modelRepository.saveAndFlush(model);
+        var engine = engineRepository.findById(request.getEngineId())
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Engine with id: %s not found", request.getEngineId())));
+
+        var transmission = transmissionRepository.findById(request.getTransmissionId())
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Transmission with id: %s not found", request.getTransmissionId())));
+
+        var wheel = wheelRepository.findById(request.getWheelId())
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Wheel with id: %s not found", request.getWheelId())));
+
+        var model = modelMapper.from(request, engine, transmission, wheel);
+        var savedModel = modelRepository.saveAndFlush(model);
+
+        var factories = factoryRepository.findAllById(request.getFactoryIds());
+
+        var modelFactories = factories
+                .stream()
+                .map(o -> modelFactoryMapper.from(savedModel, o))
+                .toList();
+
+        modelFactoryRepository.saveAllAndFlush(modelFactories);
+
         return model.getId();
     }
 

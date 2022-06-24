@@ -7,20 +7,22 @@ import com.gavrish.automarket.model.dto.view.ModelView;
 import com.gavrish.automarket.model.entity.Engine;
 import com.gavrish.automarket.model.entity.Model;
 import com.gavrish.automarket.model.entity.Transmission;
+import com.gavrish.automarket.model.entity.Wheel;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ModelMapperImpl implements ModelMapper {
 
     @Override
-    public Model from(ModelAddRequest source, Engine engine, Transmission transmission) {
+    public Model from(ModelAddRequest source, Engine engine, Transmission transmission, Wheel wheel) {
         return new Model()
                 .setName(source.getName())
                 .setDriveTrain(source.getDriveTrain())
                 .setFuelConsumption(source.getFuelConsumption())
                 .setColor(source.getColor())
                 .setEngine(engine)
-                .setTransmission(transmission);
+                .setTransmission(transmission)
+                .setWheel(wheel);
     }
 
     @Override

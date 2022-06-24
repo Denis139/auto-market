@@ -12,6 +12,8 @@ CREATE TYPE transmission_type AS ENUM ('AUTOMATIC', 'MECHANICAL', 'ROBOT', 'CVT'
 
 CREATE TYPE engine_type AS ENUM ('GASOLINE', 'DIESEL', 'HYBRID', 'ELECTRICAL');
 
+CREATE TYPE role_type AS ENUM ('SELLER', 'CUSTOMER', 'ADMIN', 'MODERATOR');
+
 CREATE TABLE IF NOT EXISTS engine
 (
     id          uuid      default uuid_generate_v4() not null
@@ -71,7 +73,10 @@ CREATE TABLE IF NOT EXISTS model
             references engine,
     transmission_id  uuid
         constraint model_transmission_fkey
-            references transmission
+            references transmission,
+    wheel_id         uuid
+        constraint model_wheel_fkey
+            references wheel
 );
 
 CREATE TABLE IF NOT EXISTS car
@@ -96,9 +101,9 @@ CREATE TABLE IF NOT EXISTS factory
         constraint factory_pkey
             primary key,
     factory_name varchar                              not null,
-    country      varchar                                 not null,
-    region       varchar                                 not null,
-    city         varchar                                 not null,
+    country      varchar                              not null,
+    region       varchar                              not null,
+    city         varchar                              not null,
     employees    int                                  not null,
     created_at   timestamp default now()              not null,
     updated_at   timestamp default now()              not null
@@ -115,13 +120,37 @@ CREATE TABLE IF NOT EXISTS model_factory
             references model
 );
 
-CREATE TABLE IF NOT EXISTS model_wheel
+CREATE TABLE IF NOT EXISTS app_user
 (
-    id        uuid not null,
-    wheel_id uuid
-        constraint model_wheel_wheel_fkey
-            references wheel,
-    model_id  uuid
-        constraint model_wheel_model_fkey
-            references model
+    id        uuid     default uuid_generate_v4()      not null
+        constraint user_pkey
+            primary key,
+    firstname           varchar                        not null,
+    lastname            varchar                        not null,
+    telephone_number    int                            not null,
+    email               varchar                        not null,
+    created_at  timestamp default now()                not null,
+    updated_at  timestamp default now()                not null
+);
+
+CREATE TABLE IF NOT EXISTS role
+(
+    id          uuid      default uuid_generate_v4() not null
+        constraint role_pkey
+            primary key,
+    role_type   role_type                            not null,
+    description varchar                              not null,
+    created_at  timestamp default now()              not null,
+    updated_at  timestamp default now()              not null
+);
+
+CREATE TABLE IF NOT EXISTS user_role
+(
+   id           uuid      not null,
+   user_id  uuid
+     constraint app_user_role_app_user_fkey
+        references app_user,
+   role_id      uuid
+     constraint app_user_role_role_fkey
+        references role
 );

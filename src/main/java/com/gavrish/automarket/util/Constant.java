@@ -33,16 +33,30 @@ public class Constant {
     public static final String DELETE_FACTORY = "/api/v1/factory/delete/{id}";
 
 
-    public static final String ADD_CAR= "/api/v1/car/add";
+    public static final String ADD_CAR = "/api/v1/car/add";
     public static final String GET_CAR = "/api/v1/car/get/{id}";
     public static final String GET_ALL_CAR = "/api/v1/car/getAll";
     public static final String UPDATE_CAR = "/api/v1/car/update/{id}";
     public static final String DELETE_CAR = "/api/v1/car/delete/{id}";
 
 
-    public static final String ADD_MODEL= "/api/v1/models/add";
+    public static final String ADD_MODEL = "/api/v1/models/add";
     public static final String GET_MODEL = "/api/v1/models/get/{id}";
     public static final String GET_ALL_MODEL = "/api/v1/models/getAll";
     public static final String UPDATE_MODEL = "/api/v1/models/update/{id}";
     public static final String DELETE_MODEL = "/api/v1/models/delete/{id}";
+
+
+    public static final String ADD_ROLE = "/api/v1/roles/add";
+    public static final String GET_ROLE = "/api/v1/roles/get/{id}";
+    public static final String GET_ALL_ROLE = "/api/v1/roles/getAll";
+    public static final String UPDATE_ROLE = "/api/v1/roles/update/{id}";
+    public static final String DELETE_ROLE = "/api/v1/roles/delete/{id}";
+
+
+    public static final String ADD_USER = "/api/v1/users/add";
+    public static final String GET_USER = "/api/v1/users/get/{id}";
+    public static final String GET_ALL_USER = "/api/v1/users/getAll";
+    public static final String UPDATE_USER = "/api/v1/users/update/{id}";
+    public static final String DELETE_USER = "/api/v1/users/delete/{id}";
 }

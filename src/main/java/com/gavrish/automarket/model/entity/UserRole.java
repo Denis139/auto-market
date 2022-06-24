@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.Accessors;
-
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -13,18 +12,18 @@ import java.util.UUID;
 @Accessors(chain = true)
 @NoArgsConstructor
 @ToString(callSuper = true)
-@Table(name = "model_wheel")
-public class ModelWheel {
+@Table(name = "user_role")
+public class UserRole {
 
     @Id
     @GeneratedValue
     private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "wheel_id")
-    private Wheel wheel;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "model_id")
-    private Model model;
+    @JoinColumn(name = "role_id")
+    private Role role;
 }

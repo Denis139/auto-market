@@ -4,6 +4,7 @@ import com.gavrish.automarket.mapper.WheelMapper;
 import com.gavrish.automarket.model.dto.request.WheelAddRequest;
 import com.gavrish.automarket.model.dto.request.WheelUpdateRequest;
 import com.gavrish.automarket.model.dto.view.WheelView;
+import com.gavrish.automarket.model.entity.Model;
 import com.gavrish.automarket.model.entity.Wheel;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class WheelMapperImpl implements WheelMapper {
 
     @Override
-    public Wheel from(WheelAddRequest source) {
+    public Wheel from(WheelAddRequest source, Model model) {
         return new Wheel()
                 .setName(source.getName())
                 .setDiameter(source.getDiameter())

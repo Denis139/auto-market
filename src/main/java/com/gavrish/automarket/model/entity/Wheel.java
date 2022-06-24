@@ -12,9 +12,9 @@ import java.util.List;
 @Entity()
 @Data
 @Accessors(chain = true)
+@ToString(callSuper = true, exclude = {"models"})
+@EqualsAndHashCode(callSuper = true, exclude = {"models"})
 @NoArgsConstructor
-@ToString(callSuper = true, exclude = "modelWheels")
-@EqualsAndHashCode(callSuper = true, exclude = "modelWheels")
 @Table(name = "wheel")
 public class Wheel extends BaseEntity {
 
@@ -37,5 +37,5 @@ public class Wheel extends BaseEntity {
     private Double weight;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "wheel")
-    private List<ModelWheel> modelWheels = new LinkedList<>();
+    private List<Model> models = new LinkedList<>();
 }

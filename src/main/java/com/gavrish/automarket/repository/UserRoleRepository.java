@@ -1,11 +1,12 @@
 package com.gavrish.automarket.repository;
 
-import com.gavrish.automarket.model.entity.ModelWheel;
+import com.gavrish.automarket.model.entity.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.UUID;
 
 @Repository
-public interface ModelWheelRepository extends JpaRepository<ModelWheel, UUID> {
+public interface UserRoleRepository extends JpaRepository<UserRole, UUID> {
+
+
 }

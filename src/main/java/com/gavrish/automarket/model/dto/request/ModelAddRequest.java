@@ -1,13 +1,12 @@
 package com.gavrish.automarket.model.dto.request;
 
-import com.gavrish.automarket.model.entity.ColorEnum;
-import com.gavrish.automarket.model.entity.DriveTrainEnum;
-import com.gavrish.automarket.model.entity.Engine;
-import com.gavrish.automarket.model.entity.Transmission;
+import com.gavrish.automarket.model.entity.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -30,4 +29,9 @@ public class ModelAddRequest {
 
     @NotNull(message = "Field[transmission] must be present")
     private UUID transmissionId;
+
+    @NotNull(message = "Field[wheelId] must be present")
+    private UUID wheelId;
+
+    List<UUID> factoryIds = new LinkedList<>();
 }

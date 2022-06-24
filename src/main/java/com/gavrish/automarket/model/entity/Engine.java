@@ -39,13 +39,13 @@ public class Engine extends BaseEntity {
     @Column(name = "torque", nullable = false)
     private Integer torque;
 
-    @Column(name = "fuel", nullable = false)                   //добавить на изменение
+    @Column(name = "fuel", nullable = false)
     private Integer fuel;
 
     @Column(name = "warranty")
     private String warranty;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "engine")           // почему не многие ко многим?
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "engine")
     private List<Model> models = new LinkedList<>();
 }
 

@@ -5,12 +5,12 @@ import com.gavrish.automarket.model.dto.request.WheelAddRequest;
 import com.gavrish.automarket.model.dto.request.WheelUpdateRequest;
 import com.gavrish.automarket.model.dto.view.WheelView;
 import com.gavrish.automarket.model.entity.Wheel;
+import com.gavrish.automarket.repository.ModelRepository;
 import com.gavrish.automarket.repository.WheelRepository;
 import com.gavrish.automarket.service.domain.WheelDomainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.UUID;
@@ -23,10 +23,13 @@ public class WheelDomainServiceImpl implements WheelDomainService {
 
     private final WheelMapper wheelMapper;
 
+    private final ModelRepository modelRepository;
+
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UUID add(WheelAddRequest request) {                  ///???????
-        var wheel = wheelMapper.from(request);
+        var model = modelRepository.getById(request.getModelId());        //  ДОБАВИЛ
+        var wheel = wheelMapper.from(request, model);
         wheel = wheelRepository.saveAndFlush(wheel);
         return wheel.getId();
     }

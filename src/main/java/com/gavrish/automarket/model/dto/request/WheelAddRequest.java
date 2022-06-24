@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 @Data
 @Accessors(chain = true)
@@ -25,5 +26,8 @@ public class WheelAddRequest {
 
     @NotNull(message = "Field [weight] mustn't be null")
     private Double weight;
+
+    @NotNull(message = "Field [modeId] mustn't be null")
+    private UUID modelId;
 
 }

@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.Accessors;
-
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -12,7 +11,7 @@ import java.util.UUID;
 @Data
 @Accessors(chain = true)                          //????????????
 @NoArgsConstructor
-@ToString(callSuper = true)                       //????????????
+@ToString(callSuper = true)
 @Table(name = "model_factory")
 public class ModelFactory {
 
