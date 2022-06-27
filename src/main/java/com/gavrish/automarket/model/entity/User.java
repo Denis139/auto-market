@@ -32,4 +32,10 @@ public class User extends BaseEntity{
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<UserRole> userRoleList = new LinkedList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Car> list = new LinkedList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Card> listCard = new LinkedList<>();
 }

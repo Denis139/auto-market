@@ -10,7 +10,7 @@ import com.gavrish.automarket.model.entity.Transmission;
 import com.gavrish.automarket.model.entity.Wheel;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service()
 public class ModelMapperImpl implements ModelMapper {
 
     @Override

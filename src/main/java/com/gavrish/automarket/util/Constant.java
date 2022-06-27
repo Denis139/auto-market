@@ -59,4 +59,18 @@ public class Constant {
     public static final String GET_ALL_USER = "/api/v1/users/getAll";
     public static final String UPDATE_USER = "/api/v1/users/update/{id}";
     public static final String DELETE_USER = "/api/v1/users/delete/{id}";
+
+
+    public static final String ADD_CARD = "/api/v1/cards/add";
+    public static final String GET_CARD = "/api/v1/cards/get/{id}";
+    public static final String GET_ALL_CARD = "/api/v1/cards/getAll";
+    public static final String UPDATE_CARD = "/api/v1/cards/update/{id}";
+    public static final String DELETE_CARD = "/api/v1/cards/delete/{id}";
+
+
+    public static final String ADD_TRANSACTION = "/api/v1/transactions/add";
+    public static final String GET_TRANSACTION = "/api/v1/transactions/get/{id}";
+    public static final String GET_ALL_TRANSACTION = "/api/v1/transactions/getAll";
+    public static final String UPDATE_TRANSACTION = "/api/v1/transactions/update/{id}";
+    public static final String DELETE_TRANSACTION = "/api/v1/transactions/delete/{id}";
 }

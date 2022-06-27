@@ -15,13 +15,13 @@ public class CarAddRequest{
     @NotBlank(message = "Field [brand] must be present")
     private String brand;
 
-    @NotNull(message = "Field [yearOfIssue] must be present")
+    @NotNull(message = "Field [yearOfIssue] mustn't be null")
     private LocalDateTime yearOfIssue;
 
     private Long mileage;
 
     private BigDecimal price;
 
-    @NotNull(message = "Field [modelId] must be present")
+    @NotNull(message = "Field [modelId] mustn't be null")
     private UUID modelId;
 }

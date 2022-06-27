@@ -6,7 +6,7 @@ import com.gavrish.automarket.model.entity.User;
 import com.gavrish.automarket.model.entity.UserRole;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service()
 public class UserRoleMapperImpl implements UserRoleMapper {
 
     @Override

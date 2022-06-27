@@ -14,6 +14,57 @@ CREATE TYPE engine_type AS ENUM ('GASOLINE', 'DIESEL', 'HYBRID', 'ELECTRICAL');
 
 CREATE TYPE role_type AS ENUM ('SELLER', 'CUSTOMER', 'ADMIN', 'MODERATOR');
 
+CREATE TYPE currency_type AS ENUM ('USD', 'EUR', 'RUB');
+
+CREATE TYPE payment_system AS ENUM ('VISA', 'MASTER CARD', 'MIR');
+
+CREATE TABLE IF NOT EXISTS app_user
+(
+    id        uuid     default uuid_generate_v4()      not null
+        constraint user_pkey
+            primary key,
+    firstname           varchar                        not null,
+    lastname            varchar                        not null,
+    telephone_number    int                            not null,
+    email               varchar                        not null,
+    created_at  timestamp default now()                not null,
+    updated_at  timestamp default now()                not null
+);
+
+CREATE TABLE IF NOT EXISTS card
+(
+    id             uuid      default uuid_generate_v4() not null
+        constraint card_pkey
+            primary key,
+    number         varchar                              not null,
+    name           varchar                              not null,
+    date           timestamp                            not null,
+    cvv            varchar                              not null,
+    payment_system payment_system                       not null,
+    user_id        uuid
+        constraint card_user_fkey
+            references app_user,
+    created_at     timestamp default now()              not null,
+    updated_at     timestamp default now()              not null
+);
+
+
+CREATE TABLE IF NOT EXISTS app_transaction
+(
+    id             uuid      default uuid_generate_v4() not null
+        constraint transaction_pkey
+            primary key,
+    bank_id_transaction varchar,
+    date           timestamp                            not null,
+    amount         decimal                              not null,
+    currency  currency_type                        not null,
+    card_id        uuid
+        constraint transaction_card_fkey
+            references card,
+    created_at     timestamp default now()              not null,
+    updated_at     timestamp default now()              not null
+);
+
 CREATE TABLE IF NOT EXISTS engine
 (
     id          uuid      default uuid_generate_v4() not null
@@ -92,8 +143,12 @@ CREATE TABLE IF NOT EXISTS car
     updated_at    timestamp default now()              not null,
     model_id      uuid
         constraint car_model_fkey
-            references model
+            references model,
+    app_user_id   uuid
+        constraint car_app_user_fkey
+            references app_user
 );
+
 
 CREATE TABLE IF NOT EXISTS factory
 (
@@ -120,19 +175,6 @@ CREATE TABLE IF NOT EXISTS model_factory
             references model
 );
 
-CREATE TABLE IF NOT EXISTS app_user
-(
-    id        uuid     default uuid_generate_v4()      not null
-        constraint user_pkey
-            primary key,
-    firstname           varchar                        not null,
-    lastname            varchar                        not null,
-    telephone_number    int                            not null,
-    email               varchar                        not null,
-    created_at  timestamp default now()                not null,
-    updated_at  timestamp default now()                not null
-);
-
 CREATE TABLE IF NOT EXISTS role
 (
     id          uuid      default uuid_generate_v4() not null
@@ -154,3 +196,9 @@ CREATE TABLE IF NOT EXISTS user_role
      constraint app_user_role_role_fkey
         references role
 );
+
+
+
+
+
+

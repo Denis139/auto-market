@@ -6,7 +6,7 @@ import com.gavrish.automarket.model.dto.view.UserView;
 import com.gavrish.automarket.model.entity.User;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service()
 public class UserMapperImpl implements UserMapper {
 
     @Override

@@ -8,7 +8,7 @@ import com.gavrish.automarket.model.entity.Model;
 import com.gavrish.automarket.model.entity.Wheel;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service()
 public class WheelMapperImpl implements WheelMapper {
 
     @Override

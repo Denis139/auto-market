@@ -25,10 +25,4 @@ public class TransmissionMapperImpl implements TransmissionMapper {
                 .setTransmissionTypeEnum(source.getTransmissionType())
                 .setNumberGears(source.getNumberGears());
     }
-
-//    @Override
-//    public Transmission merge(Transmission target, TransmissionUpdateRequest source) {
-//        return target
-//                .setId(source.getId() = null? target.getId() : source.getId());
-//    }
 }

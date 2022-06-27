@@ -6,7 +6,7 @@ import com.gavrish.automarket.model.entity.Model;
 import com.gavrish.automarket.model.entity.ModelFactory;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service()
 public class ModelFactoryMapperImpl implements ModelFactoryMapper {
 
     @Override
