@@ -37,6 +37,7 @@ public class Card extends BaseEntity{
     private String cvv;
 
     @Type(type = "pgsql_enum")
+    @Enumerated(value  = EnumType.STRING)
     @Column(name = "payment_system", nullable = false)
     private PaymentSystem paymentSystem;
 

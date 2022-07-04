@@ -31,8 +31,9 @@ public class CarDomainServiceImpl implements CarDomainService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UUID add(CarAddRequest request) {
+        var model = modelRepository.findById(request.getModelId())
+                .orElseThrow(()-> new EntityNotFoundException(String.format("Model with id [%s] not found", request.getModelId())));
 
-        var model = modelRepository.getById(request.getModelId());
         var car = carMapper.from(request, model);
         car = carRepository.saveAndFlush(car);
         return car.getId();

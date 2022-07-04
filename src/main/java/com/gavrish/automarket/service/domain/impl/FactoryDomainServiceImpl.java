@@ -8,12 +8,15 @@ import com.gavrish.automarket.model.entity.Factory;
 import com.gavrish.automarket.repository.FactoryRepository;
 import com.gavrish.automarket.service.domain.FactoryDomainService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.UUID;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class FactoryDomainServiceImpl implements FactoryDomainService {
@@ -25,8 +28,12 @@ public class FactoryDomainServiceImpl implements FactoryDomainService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UUID add(FactoryAddRequest request) {
+        log.info("add");
+
         var factory = factoryMapper.from(request);
         factory = factoryRepository.saveAndFlush(factory);
+
+        log.info("end");
         return factory.getId();
     }
 

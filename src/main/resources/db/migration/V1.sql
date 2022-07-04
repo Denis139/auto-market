@@ -5,18 +5,22 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TYPE drivetrain AS ENUM ('FRONT', 'REAR', 'ALL');
 
 CREATE TYPE color AS ENUM (
-  'METALLIC WHITE', 'METALLIC BLACK', 'METALLIC GRAY', 'METALLIC BROWN', 'METALLIC RED', 'METALLIC BLUE',
-    'METALLIC GREEN', 'METALLIC GOLD', 'METALLIC ORANGE', 'METALLIC YELLOW', 'METALLIC PURPLE');
+  'METALLIC_WHITE', 'METALLIC_BLACK', 'METALLIC_GRAY', 'METALLIC_BROWN', 'METALLIC_RED', 'METALLIC_BLUE',
+    'METALLIC_GREEN', 'METALLIC_GOLD', 'METALLIC_ORANGE', 'METALLIC_YELLOW', 'METALLIC_PURPLE');
 
 CREATE TYPE transmission_type AS ENUM ('AUTOMATIC', 'MECHANICAL', 'ROBOT', 'CVT');
 
 CREATE TYPE engine_type AS ENUM ('GASOLINE', 'DIESEL', 'HYBRID', 'ELECTRICAL');
 
-CREATE TYPE role_type AS ENUM ('SELLER', 'CUSTOMER', 'ADMIN', 'MODERATOR');
+CREATE TYPE brand AS ENUM ('AUDI', 'BENTLEY', 'BMW', 'CHEVROLET', 'CITROEN', 'DAEWOO', 'FERRARI', 'FORD', 'GEELY', 'HAVAL', 'HONDA', 'HYUNDAI',
+    'INFINITI', 'KIA', 'LAMBORGHINI', 'LAND ROVER', 'LEXUS', 'LIFAN', 'MASERATI', 'MAZDA', 'MERCEDES-BENZ',  'MINI', 'MITSUBISHI', 'NISSAN', 'OPEL',
+    'PEUJEOT', 'PORSCHE', 'RENAULT', 'SKODA', 'SUBARU', 'SUZUKI', 'TOYOTA', 'VOLKSWAGEN', 'VOLVO');
+
+CREATE TYPE role_type AS ENUM ('SELLER', 'CUSTOMER', 'ADMIN');
 
 CREATE TYPE currency_type AS ENUM ('USD', 'EUR', 'RUB');
 
-CREATE TYPE payment_system AS ENUM ('VISA', 'MASTER CARD', 'MIR');
+CREATE TYPE payment_system AS ENUM ('VISA', 'MASTER_CARD', 'MIR');
 
 CREATE TABLE IF NOT EXISTS app_user
 (
@@ -51,19 +55,20 @@ CREATE TABLE IF NOT EXISTS card
 
 CREATE TABLE IF NOT EXISTS app_transaction
 (
-    id             uuid      default uuid_generate_v4() not null
+    id                  uuid      default uuid_generate_v4() not null
         constraint transaction_pkey
             primary key,
     bank_id_transaction varchar,
-    date           timestamp                            not null,
-    amount         decimal                              not null,
-    currency  currency_type                        not null,
-    card_id        uuid
+    date                timestamp                            not null,
+    amount              decimal                              not null,
+    currency            currency_type                        not null,
+    card_id             uuid
         constraint transaction_card_fkey
             references card,
-    created_at     timestamp default now()              not null,
-    updated_at     timestamp default now()              not null
+    created_at          timestamp default now()              not null,
+    updated_at          timestamp default now()              not null
 );
+
 
 CREATE TABLE IF NOT EXISTS engine
 (
@@ -135,8 +140,8 @@ CREATE TABLE IF NOT EXISTS car
     id            uuid      default uuid_generate_v4() not null
         constraint car_pkey
             primary key,
-    brand         varchar                              not null,
-    year_of_issue timestamp                            not null,
+    brand         brand                                not null,
+    year_of_issue int                                  not null,
     mileage       bigint,
     price         decimal,
     created_at    timestamp default now()              not null,
@@ -148,6 +153,7 @@ CREATE TABLE IF NOT EXISTS car
         constraint car_app_user_fkey
             references app_user
 );
+
 
 
 CREATE TABLE IF NOT EXISTS factory

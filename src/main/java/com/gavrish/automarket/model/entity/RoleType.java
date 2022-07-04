@@ -8,8 +8,7 @@ public enum RoleType {
 
     SELLER ("SELLER"),
     CUSTOMER ("CUSTOMER"),
-    ADMIN ("ADMIN"),
-    MODERATOR("MODERATOR");
+    ADMIN ("ADMIN");
 
     private final String value;
 

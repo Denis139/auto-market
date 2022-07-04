@@ -1,7 +1,6 @@
 package com.gavrish.automarket.model.entity;
 
 import com.gavrish.automarket.exception.EnumValueNotFoundException;
-
 import java.util.Arrays;
 
 public enum ColorEnum {

@@ -28,8 +28,7 @@ public class WheelDomainServiceImpl implements WheelDomainService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UUID add(WheelAddRequest request) {                  ///???????
-        var model = modelRepository.getById(request.getModelId());        //  ДОБАВИЛ
-        var wheel = wheelMapper.from(request, model);
+        var wheel = wheelMapper.from(request);
         wheel = wheelRepository.saveAndFlush(wheel);
         return wheel.getId();
     }

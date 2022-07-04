@@ -17,7 +17,8 @@ public class CarMapperImpl implements CarMapper {
                 .setBrand(source.getBrand())
                 .setYearOfIssue(source.getYearOfIssue())
                 .setMileage(source.getMileage())
-                .setPrice(source.getPrice());
+                .setPrice(source.getPrice())
+                .setModel(model);
     }
 
     @Override
@@ -27,7 +28,8 @@ public class CarMapperImpl implements CarMapper {
                 .setBrand(source.getBrand())
                 .setYearOfIssue(source.getYearOfIssue())
                 .setMileage(source.getMileage())
-                .setPrice(source.getPrice());
+                .setPrice(source.getPrice())
+                .setModelId(source.getModel().getId());                     // ?????????????????
     }
 
     @Override
@@ -36,4 +38,6 @@ public class CarMapperImpl implements CarMapper {
                 .setMileage(source.getMileage() == null ? target.getMileage() : source.getMileage())
                 .setPrice(source.getPrice() == null ? target.getPrice() : source.getPrice());
     }
+
+
 }

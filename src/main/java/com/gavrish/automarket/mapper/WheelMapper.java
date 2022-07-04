@@ -8,7 +8,7 @@ import com.gavrish.automarket.model.entity.Wheel;
 
 public interface WheelMapper {
 
-  Wheel from(WheelAddRequest source, Model model);
+  Wheel from(WheelAddRequest source);
 
   WheelView from(Wheel source);
 

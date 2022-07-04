@@ -79,5 +79,3 @@ public class EngineDomainServiceImpl implements EngineDomainService {
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Engine with id [%s] not found", id)));
     }
 }
-
-

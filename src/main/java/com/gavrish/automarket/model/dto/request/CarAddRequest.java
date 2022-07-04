@@ -1,10 +1,11 @@
 package com.gavrish.automarket.model.dto.request;
 
+import com.gavrish.automarket.model.entity.Brand;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -12,11 +13,11 @@ import java.util.UUID;
 @Accessors(chain = true)
 public class CarAddRequest{
 
-    @NotBlank(message = "Field [brand] must be present")
-    private String brand;
+    @NotNull(message = "Field [brand] mustn't be null")
+    private Brand brand;
 
     @NotNull(message = "Field [yearOfIssue] mustn't be null")
-    private LocalDateTime yearOfIssue;
+    private Integer yearOfIssue;
 
     private Long mileage;
 

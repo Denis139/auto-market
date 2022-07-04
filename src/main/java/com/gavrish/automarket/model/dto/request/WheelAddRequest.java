@@ -26,8 +26,4 @@ public class WheelAddRequest {
 
     @NotNull(message = "Field [weight] mustn't be null")
     private Double weight;
-
-    @NotNull(message = "Field [modeId] mustn't be null")
-    private UUID modelId;
-
 }

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class WheelMapperImpl implements WheelMapper {
 
     @Override
-    public Wheel from(WheelAddRequest source, Model model) {
+    public Wheel from(WheelAddRequest source) {
         return new Wheel()
                 .setName(source.getName())
                 .setDiameter(source.getDiameter())

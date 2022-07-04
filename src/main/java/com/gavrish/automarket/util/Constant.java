@@ -38,6 +38,7 @@ public class Constant {
     public static final String GET_ALL_CAR = "/api/v1/car/getAll";
     public static final String UPDATE_CAR = "/api/v1/car/update/{id}";
     public static final String DELETE_CAR = "/api/v1/car/delete/{id}";
+    public static final String GET_ALL_CAR_BY_PARAMS = "/api/v1/car/getAllByParams";
 
 
     public static final String ADD_MODEL = "/api/v1/models/add";
