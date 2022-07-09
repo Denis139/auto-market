@@ -10,6 +10,7 @@ public class Constant {
     public static final String GET_ENGINE = "/api/v1/engine/get/{id}";
     public static final String UPDATE_ENGINE = "/api/v1/engine/update/{id}";
     public static final String DELETE_ENGINE = "/api/v1/engine/delete/{id}";
+    public static final String GET_ALL_BY_CAR_PARAMS_TO_ENGINE = "/api/v1/engine/getAllByParams";
 
 
     public static final String ADD_TRANSMISSION = "/api/v1/transmission/add";
@@ -31,6 +32,8 @@ public class Constant {
     public static final String GET_ALL_FACTORY = "/api/v1/factory/getAll";
     public static final String UPDATE_FACTORY = "/api/v1/factory/update/{id}";
     public static final String DELETE_FACTORY = "/api/v1/factory/delete/{id}";
+
+    public static final String GET_ALL_BY_CAR_PARAMS_TO_FACTORY = "/api/v1/factory/getAllByParams";
 
 
     public static final String ADD_CAR = "/api/v1/car/add";

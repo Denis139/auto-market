@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Entity()
 @Data
-@Accessors(chain = true)                          //????????????
+@Accessors(chain = true)
 @NoArgsConstructor
 @ToString(callSuper = true)
 @Table(name = "model_factory")

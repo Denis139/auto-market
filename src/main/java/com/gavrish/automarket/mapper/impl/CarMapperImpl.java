@@ -29,7 +29,7 @@ public class CarMapperImpl implements CarMapper {
                 .setYearOfIssue(source.getYearOfIssue())
                 .setMileage(source.getMileage())
                 .setPrice(source.getPrice())
-                .setModelId(source.getModel().getId());                     // ?????????????????
+                .setModelId(source.getModel().getId());
     }
 
     @Override

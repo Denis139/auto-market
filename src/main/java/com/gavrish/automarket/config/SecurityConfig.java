@@ -1,4 +1,4 @@
-package com.gavrish.automarket;
+package com.gavrish.automarket.config;
 
 import com.gavrish.automarket.model.entity.RoleType;
 import org.springframework.context.annotation.Bean;

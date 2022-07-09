@@ -33,5 +33,6 @@ public class ModelAddRequest {
     @NotNull(message = "Field[wheelId] must be present")
     private UUID wheelId;
 
-    List<UUID> factoryIds = new LinkedList<>();
+    @NotNull
+    List<UUID> factoryIds;
 }

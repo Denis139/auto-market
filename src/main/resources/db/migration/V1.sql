@@ -135,6 +135,20 @@ CREATE TABLE IF NOT EXISTS model
             references wheel
 );
 
+CREATE TABLE IF NOT EXISTS factory
+(
+    id           uuid      default uuid_generate_v4() not null
+        constraint factory_pkey
+            primary key,
+    factory_name varchar                              not null,
+    country      varchar                              not null,
+    region       varchar                              not null,
+    city         varchar                              not null,
+    employees    int                                  not null,
+    created_at   timestamp default now()              not null,
+    updated_at   timestamp default now()              not null
+);
+
 CREATE TABLE IF NOT EXISTS car
 (
     id            uuid      default uuid_generate_v4() not null
@@ -152,22 +166,6 @@ CREATE TABLE IF NOT EXISTS car
     app_user_id   uuid
         constraint car_app_user_fkey
             references app_user
-);
-
-
-
-CREATE TABLE IF NOT EXISTS factory
-(
-    id           uuid      default uuid_generate_v4() not null
-        constraint factory_pkey
-            primary key,
-    factory_name varchar                              not null,
-    country      varchar                              not null,
-    region       varchar                              not null,
-    city         varchar                              not null,
-    employees    int                                  not null,
-    created_at   timestamp default now()              not null,
-    updated_at   timestamp default now()              not null
 );
 
 CREATE TABLE IF NOT EXISTS model_factory

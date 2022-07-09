@@ -1,13 +1,10 @@
-package com.gavrish.automarket.service.CarService;
+package com.gavrish.automarket.service;
 
 import com.gavrish.automarket.model.dto.view.CarView;
 import com.gavrish.automarket.model.entity.Brand;
 import com.gavrish.automarket.model.entity.EngineTypeEnum;
 import com.gavrish.automarket.model.entity.TransmissionTypeEnum;
-import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public interface CarService {
@@ -22,4 +19,8 @@ public interface CarService {
                                  Double engineVolumeMin,
                                  Double engineVolumeMax,
                                  TransmissionTypeEnum transmissionType);
+
+    List<CarView> getAllByCarParams(String factoryName);
+
+    List<CarView> getAllByEngineParams(String factoryName);
 }

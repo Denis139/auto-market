@@ -47,7 +47,7 @@ public class Model extends BaseEntity {
     private Transmission transmission;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "wheel_id")                                    // ДОБАВИЛ
+    @JoinColumn(name = "wheel_id")
     private Wheel wheel;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "model")

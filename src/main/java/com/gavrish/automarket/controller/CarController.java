@@ -6,7 +6,7 @@ import com.gavrish.automarket.model.dto.view.CarView;
 import com.gavrish.automarket.model.entity.Brand;
 import com.gavrish.automarket.model.entity.EngineTypeEnum;
 import com.gavrish.automarket.model.entity.TransmissionTypeEnum;
-import com.gavrish.automarket.service.CarService.CarServiceImpl.CarServiceImpl;
+import com.gavrish.automarket.service.impl.CarServiceImpl;
 import com.gavrish.automarket.service.domain.CarDomainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -60,5 +60,13 @@ public class CarController {
         return carService.getAllByParams(brand, modelName, yearOfIssueMin, yearOfIssueMax, engineType, enginePowerMin,
                                          enginePowerMax, engineVolumeMin, engineVolumeMax, transmissionType);
     }
+    @GetMapping(value = GET_ALL_BY_CAR_PARAMS_TO_FACTORY)
+    public List<CarView> getAllByCarParams(@RequestParam(value = "factoryName") String factoryName) {
+        return carService.getAllByCarParams(factoryName);
+    }
+//    @GetMapping(value = GET_ALL_BY_CAR_PARAMS_TO_ENGINE)        //
+//    public List<CarView> getAllByEngineParams(@RequestParam(value = "name") String name) {
+//        return carService.getAllByEngineParams(name);
+//    }
 }
 

@@ -6,7 +6,6 @@ import com.gavrish.automarket.model.dto.request.ModelAddRequest;
 import com.gavrish.automarket.model.dto.request.ModelUpdateRequest;
 import com.gavrish.automarket.model.dto.view.ModelView;
 import com.gavrish.automarket.model.entity.Model;
-import com.gavrish.automarket.model.entity.Wheel;
 import com.gavrish.automarket.repository.*;
 import com.gavrish.automarket.service.domain.ModelDomainService;
 import lombok.RequiredArgsConstructor;
@@ -21,8 +20,6 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ModelDomainServiceImpl implements ModelDomainService {
 
-    private final ModelMapper modelMapper;
-    private final ModelFactoryMapper modelFactoryMapper;
     private final ModelRepository modelRepository;
     private final EngineRepository engineRepository;
     private final TransmissionRepository transmissionRepository;
@@ -30,6 +27,8 @@ public class ModelDomainServiceImpl implements ModelDomainService {
     private final FactoryRepository factoryRepository;
     private final ModelFactoryRepository modelFactoryRepository;
 
+    private final ModelMapper modelMapper;
+    private final ModelFactoryMapper modelFactoryMapper;
 
     @Override
     @Transactional(rollbackFor = Exception.class)

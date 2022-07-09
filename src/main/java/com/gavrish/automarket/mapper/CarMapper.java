@@ -15,7 +15,8 @@ public interface CarMapper {
     CarView from(Car source);
 
     default List<CarView> from(Collection<Car> source) {
-        return source.stream()
+        return source
+                .stream()
                 .map(o -> from(o))
                 .toList();
     }

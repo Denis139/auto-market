@@ -1,13 +1,13 @@
-package com.gavrish.automarket.service.CarService.CarServiceImpl;
+package com.gavrish.automarket.service.impl;
 
 import com.gavrish.automarket.mapper.CarMapper;
 import com.gavrish.automarket.model.dto.view.CarView;
-import com.gavrish.automarket.model.entity.Brand;
-import com.gavrish.automarket.model.entity.EngineTypeEnum;
-import com.gavrish.automarket.model.entity.TransmissionTypeEnum;
+import com.gavrish.automarket.model.entity.*;
 import com.gavrish.automarket.repository.CarRepository;
+import com.gavrish.automarket.repository.EngineRepository;
+import com.gavrish.automarket.repository.FactoryRepository;
 import com.gavrish.automarket.repository.ModelRepository;
-import com.gavrish.automarket.service.CarService.CarService;
+import com.gavrish.automarket.service.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +19,8 @@ public class CarServiceImpl implements CarService {
 
     private final CarRepository carRepository;
     private final ModelRepository modelRepository;
+    private final FactoryRepository factoryRepository;
+    private final EngineRepository engineRepository;
 
     private final CarMapper carMapper;
 
@@ -35,7 +37,8 @@ public class CarServiceImpl implements CarService {
                                         Double engineVolumeMax,
                                         TransmissionTypeEnum transmissionType) {
 
-        var cars = carRepository.findAllByBrandAndModel(brand, modelRepository.findByName(modelName));
+        var model = modelRepository.findByName(modelName);
+        var cars = carRepository.findAllByBrandAndModel(brand, model);
 
         if (yearOfIssueMin == null)
             yearOfIssueMin = 1950;
@@ -76,30 +79,33 @@ public class CarServiceImpl implements CarService {
 
         return carMapper.from(cars);
     }
+
+    @Override
+    @Transactional
+    public List<CarView> getAllByCarParams(String factoryName) {
+        var factory = factoryRepository.findByFactoryName(factoryName);
+        var cars = factory.getModelFactories()
+                .stream()
+                .map(ModelFactory::getModel)
+                .toList()
+                .stream()
+                .map(Model::getCars)
+                .flatMap(List::stream)
+                .toList();
+
+        return carMapper.from(cars);
+    }
+
+    @Override
+    @Transactional
+    public List<CarView> getAllByEngineParams(String name) {
+        var engine = engineRepository.findByName(name);
+        var cars = engine.getModels()
+                .stream()
+                .map(Model::getCars)
+                .flatMap(List::stream)
+                .toList();
+
+        return carMapper.from(cars);
+    }
 }
-
-
-
-//    var car = carRepository.findAll()
-//            .stream()
-//            .filter(o->o.getBrand().equals(brand))
-////                .filter(o->o.getModel().getName().equals(modelName))
-//            .filter(o->o.getYearOfIssue().isAfter(yearOfIssueMin) || o.getYearOfIssue().isBefore(yearOfIssueMax))
-//            .map(o->carMapper.from(o))
-//            .toList();
-//
-//    var engine = engineRepository.findAll()
-//            .stream()
-//            .filter(o->o.getEngineType().equals(engineType))
-//            .filter(o->o.getPower().equals(enginePowerMin))
-//            .filter(o->o.getPower().equals(enginePowerMax))
-//            .filter(o->o.getVolume().equals(engineVolumeMin))
-//            .filter(o->o.getVolume().equals(engineVolumeMax))
-//            .map(o->engineMapper.from(o));
-////                .toList();
-//
-//    var transmission = transmissionRepository.findAll()
-//            .stream()
-//            .filter(o->o.getTransmissionType().equals(transmissionType))
-//            .map(o->transmissionMapper.from(o));
-//                .toList();
