@@ -10,7 +10,8 @@ public class Constant {
     public static final String GET_ENGINE = "/api/v1/engine/get/{id}";
     public static final String UPDATE_ENGINE = "/api/v1/engine/update/{id}";
     public static final String DELETE_ENGINE = "/api/v1/engine/delete/{id}";
-    public static final String GET_ALL_BY_CAR_PARAMS_TO_ENGINE = "/api/v1/engine/getAllByParams";
+    public static final String GET_ALL_CAR_BY_ENGINE = "/api/v1/engine/getAllByParams";
+    public static final String GET_ALL_CAR_BY_TRANSMISSION = "/api/v1/transmission/getAllByParams";
 
 
     public static final String ADD_TRANSMISSION = "/api/v1/transmission/add";
@@ -33,7 +34,7 @@ public class Constant {
     public static final String UPDATE_FACTORY = "/api/v1/factory/update/{id}";
     public static final String DELETE_FACTORY = "/api/v1/factory/delete/{id}";
 
-    public static final String GET_ALL_BY_CAR_PARAMS_TO_FACTORY = "/api/v1/factory/getAllByParams";
+    public static final String GET_ALL_CAR_BY_FACTORY = "/api/v1/factory/getAllByParams";
 
 
     public static final String ADD_CAR = "/api/v1/car/add";
@@ -42,6 +43,7 @@ public class Constant {
     public static final String UPDATE_CAR = "/api/v1/car/update/{id}";
     public static final String DELETE_CAR = "/api/v1/car/delete/{id}";
     public static final String GET_ALL_CAR_BY_PARAMS = "/api/v1/car/getAllByParams";
+    public static final String GET_ALL_CAR_BY_TWO_PARAMS = "/api/v1/car/getAllByMinParams";
 
 
     public static final String ADD_MODEL = "/api/v1/models/add";

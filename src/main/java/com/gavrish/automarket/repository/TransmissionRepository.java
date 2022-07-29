@@ -11,4 +11,6 @@ public interface TransmissionRepository extends JpaRepository<Transmission, UUID
 
     Transmission findAllByTransmissionType(TransmissionTypeEnum transmissionType);
 
+    Transmission findByName(String name);
+
 }

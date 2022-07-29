@@ -2,10 +2,7 @@ package com.gavrish.automarket.service.impl;
 
 import com.gavrish.automarket.mapper.impl.CarMapperImpl;
 import com.gavrish.automarket.model.entity.*;
-import com.gavrish.automarket.repository.CarRepository;
-import com.gavrish.automarket.repository.EngineRepository;
-import com.gavrish.automarket.repository.FactoryRepository;
-import com.gavrish.automarket.repository.ModelRepository;
+import com.gavrish.automarket.repository.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -98,10 +95,13 @@ class CarServiceImplTest {
     }
 
     @Test
-    void testGetAllByCarParams() {
+    void testGetCarsByFactory() {
+
         when(factoryRepository.findByFactoryName(anyString())).thenReturn(factory());
-        var result = carService.getAllByCarParams("Germany Factory");
-        assertEquals(5, result.size());
+
+        var result = carService.getCarsByFactory("factory");
+
+        assertEquals(6, result.size());
     }
 
     private Factory factory() {
@@ -110,24 +110,28 @@ class CarServiceImplTest {
                         new ModelFactory()
                                 .setModel(new Model()
                                         .setCars(List.of(
+                                                new Car().setModel(new Model())))),
+                        new ModelFactory()
+                                .setModel(new Model()
+                                        .setCars(List.of(
                                                 new Car().setModel(new Model()),
                                                 new Car().setModel(new Model())))),
                         new ModelFactory()
                                 .setModel(new Model()
                                         .setCars(List.of(
-                                                new Car().setModel(new Model())))),
-                        new ModelFactory()
-                                .setModel(new Model()
-                                        .setCars(List.of(
+                                                new Car().setModel(new Model()),
                                                 new Car().setModel(new Model()),
                                                 new Car().setModel(new Model()))))));
     }
 
+
     @Test
-    void getAllByEngineParams() {
+    void testGetCarsByEngine() {
 
         when(engineRepository.findByName(anyString())).thenReturn(engine());
-        var result = carService.getAllByEngineParams("Engine");
+
+        var result = carService.getCarsByEngine("engine");
+
         assertNotNull(result);
 
     }

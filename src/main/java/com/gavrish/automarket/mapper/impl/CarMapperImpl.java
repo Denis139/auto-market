@@ -38,6 +38,4 @@ public class CarMapperImpl implements CarMapper {
                 .setMileage(source.getMileage() == null ? target.getMileage() : source.getMileage())
                 .setPrice(source.getPrice() == null ? target.getPrice() : source.getPrice());
     }
-
-
 }

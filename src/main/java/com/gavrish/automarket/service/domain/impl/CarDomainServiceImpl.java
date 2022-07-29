@@ -52,6 +52,7 @@ public class CarDomainServiceImpl implements CarDomainService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<CarView> getAll() {
         return carRepository.findAll()
                 .stream()
@@ -70,6 +71,7 @@ public class CarDomainServiceImpl implements CarDomainService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Boolean delete(UUID id) {
         var car = findById(id);
         carRepository.delete(car);
@@ -80,6 +82,6 @@ public class CarDomainServiceImpl implements CarDomainService {
     private Car findById(UUID id) {
         return carRepository
                 .findById(id)
-                .orElseThrow(()-> new EntityNotFoundException(String.format("Engine with id [%s] not found", id)));
+                .orElseThrow(()-> new EntityNotFoundException(String.format("Car with id [%s] not found", id)));
     }
 }

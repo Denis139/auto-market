@@ -5,6 +5,7 @@ import com.gavrish.automarket.model.entity.Brand;
 import com.gavrish.automarket.model.entity.EngineTypeEnum;
 import com.gavrish.automarket.model.entity.TransmissionTypeEnum;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface CarService {
@@ -20,7 +21,16 @@ public interface CarService {
                                  Double engineVolumeMax,
                                  TransmissionTypeEnum transmissionType);
 
-    List<CarView> getAllByCarParams(String factoryName);
+    List<CarView> getCarsByFactory(String factoryName);
 
-    List<CarView> getAllByEngineParams(String factoryName);
+    List<CarView> getCarsByEngine(String name);
+
+    public List<CarView> getCarsByTransmission(String name);
+
+    public List<CarView> getCarsByMinParams(Brand brand,
+                                            String modelName,
+                                            EngineTypeEnum engineType,
+                                            TransmissionTypeEnum transmissionType,
+                                            Long mileage,
+                                            BigDecimal price);
 }
